@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2024-02-18-01-create-card-table
+      author: asiman
+      changes:
+        - createTable:
+            tableName: cards
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: card_number
+                  type: VARCHAR
+              - column:
+                  name: card_type
+                  type: VARCHAR
+              - column:
+                  name: expiration_date
+                  type: VARCHAR
+              - column:
+                  name: account_id
+                  type: BIGINT
+  - changeSet:
+      id: 2024-02-18-01-foreign-key-account-id
+      author: asiman
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: cards
+            baseColumnNames: account_id
+            constraintName: fk_cards_card_account_id
+            referencedTableName: accounts
+            referencedColumnNames: id
+
+
+
+

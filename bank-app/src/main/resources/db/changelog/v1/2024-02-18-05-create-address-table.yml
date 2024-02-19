@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2024-02-18-01-create-address-table
+      author: asiman
+      changes:
+        - createTable:
+            tableName: addresses
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: street
+                  type: VARCHAR
+              - column:
+                  name: city
+                  type: VARCHAR
+              - column:
+                  name: postal_code
+                  type: VARCHAR
+              - column:
+                  name: user_id
+                  type: BIGINT
+  - changeSet:
+      id: 2024-02-18-01-foreign-key-user-id
+      author: asiman
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: addresses
+            baseColumnNames: user_id
+            constraintName: fk_addresses_user_id
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: CASCADE
+            onUpdate: CASCADE

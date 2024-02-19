@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2024-02-18-01-create-user-table
+      author: asiman
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: username
+                  type: VARCHAR
+                  constraints:
+                    unique: true
+              - column:
+                  name: password
+                  type: VARCHAR
