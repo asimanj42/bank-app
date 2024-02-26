@@ -1,15 +1,19 @@
 package az.ingress.bankapp.entity;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
+@Entity
+@Table(name = "card_benefits")
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-//@Entity
-//@Table(name = "card_benefits")
 public class CardBenefit {
 
     @Id
@@ -17,7 +21,10 @@ public class CardBenefit {
     private Long id;
     private String name;
     private String description;
-//
-//    @ManyToOne
-//    private Card card;
+
+    @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Card card;
 }

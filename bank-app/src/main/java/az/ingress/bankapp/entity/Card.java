@@ -1,15 +1,16 @@
 package az.ingress.bankapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "cards")
 public class Card {
@@ -17,13 +18,15 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
+    private Account account;
+
     private String cardNumber;
     private String cardType;
     private String expirationDate;
 
-    @ManyToOne
-    private Account account;
-
-//    @OneToMany(mappedBy = "card")
-//    private List<CardBenefit> benefits;
+    @OneToMany(mappedBy = "card")
+    private Set<CardBenefit> benefits;
 }

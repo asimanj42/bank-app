@@ -9,10 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.apache.commons.lang3.builder.EqualsExclude;
 
 @Data
 @NoArgsConstructor
@@ -31,6 +29,7 @@ public class Address {
     @OneToOne
     @JoinColumn(name = "user_id")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @JsonIgnore
     private User user;
 }
