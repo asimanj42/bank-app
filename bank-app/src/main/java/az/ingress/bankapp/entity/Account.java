@@ -10,16 +10,6 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "accounts")
-@NamedEntityGraph(name = "account-user",
-        attributeNodes = {
-                @NamedAttributeNode(value = "user"),
-                @NamedAttributeNode(value = "cards", subgraph = "card-benefits")
-        }, subgraphs = {
-        @NamedSubgraph(name = "card-benefits", attributeNodes = {
-                @NamedAttributeNode("benefits")
-        })
-}
-)
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

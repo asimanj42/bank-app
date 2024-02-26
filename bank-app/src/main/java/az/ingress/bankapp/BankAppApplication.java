@@ -23,8 +23,6 @@ public class BankAppApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 //        accountRepository.findByCustom().forEach(System.out::println);
 
-        accountRepository.findByAccountNumber("iba123").forEach(System.out::println);
-
 
     }
 }

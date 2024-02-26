@@ -18,7 +18,4 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     List<AccountDto> findAllCustom();
 
 
-    @EntityGraph(attributePaths = {"user", "cards", "cards.benefits"})
-    List<Account> findByAccountNumber(String accountNumber);
-
 }
