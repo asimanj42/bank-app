@@ -10,6 +10,17 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "accounts")
+@NamedEntityGraph(name = "account-user",
+        attributeNodes = {
+                @NamedAttributeNode(value = "user"),
+                @NamedAttributeNode(value = "cards", subgraph = "card-benefits")
+        }, subgraphs = {
+        @NamedSubgraph(name = "card-benefits", attributeNodes = {
+                @NamedAttributeNode("benefits")
+        })
+}
+)
+@NamedQuery(name = "test", query = "select a from Account a join fetch a.user u join fetch a.cards c join fetch c.benefits b ")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
