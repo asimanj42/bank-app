@@ -1,19 +1,18 @@
-package az.ingress.bankapp.dto;
+package az.ingress.bankapp.models.dto.account;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountDto {
+@Builder
+public class AccountResponse {
+
     private Long id;
     private String accountNumber;
     private double balance;
-    private String username;
-    private String password;
-    private String cardNumber;
-    private String cardType;
-    private String expirationDate;
+
 }
